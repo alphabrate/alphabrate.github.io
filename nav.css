@@ -1,0 +1,88 @@
+:root {
+    --dark: #555;
+    --light: #fff;
+    --navHeight: 110px;
+    --navWidth: 100%;
+    --navPaddingPercent: 0.056179775;
+    --navTextFontSizePercent: calc(1 / 6);
+    --navTextMarginEachPercent: calc(20 / 2225);
+}
+
+.nav {
+    height: var(--navHeight);
+    width: var(--navWidth);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--dark);
+    z-index: 1;
+    box-shadow: #555 0 0 10px;
+}
+
+.nav>.left {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--navPaddingPercent) * var(--navWidth));
+    transform: translateY(-50%);
+    height: calc(var(--navHeight) * 0.736);
+}
+
+.nav>.left>svg {
+    height: calc(var(--navHeight) * 0.736);
+}
+
+.nav>.right {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    right: calc(var(--navPaddingPercent) * var(--navWidth));
+    transform: translateY(-50%);
+}
+
+.nav>.right>a>svg {
+    height: calc(var(--navHeight) * var(--navTextFontSizePercent));
+}
+
+.nav>.right>a {
+    transition: .3s;
+}
+
+.nav>.right>a:hover path {
+    fill: #7B9CFF;
+}
+
+.nav>.right>a.active>svg>path {
+    fill: #E3DDA8;
+}
+
+.nav>.right>a {
+    float: right;
+    margin: calc(var(--navWidth) * var(--navTextMarginEachPercent));
+}
+
+.upperContainer {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.menu {
+    width: 0;
+    height: 100%;
+    position: fixed;
+    top: var(--navHeight);
+    right: 0;
+    background-color: var(--light);
+    z-index: 1;
+    opacity: 0;
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu>a {
+    margin: 15px;
+}

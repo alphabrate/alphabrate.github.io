@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Console</title>
+    <link href="../icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../theme/default.css">
+    <link rel='stylesheet' href='../editor.basic.css'>
+    <script src="../codeBlock.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../jquery.js"></script>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+</head>
+
+<body onkeydown="changeUrl()">
+    <div class="tool">
+        <div class="file">
+            <input type="text" name="FileName" id="filename">
+            <button id="download"><span class="material-icons-round">file_download</span></button>
+        </div>
+        <button id="submit"><span class="material-icons-round">bug_report</span></button>
+        <label for="upload"><span class="material-icons-round">file_upload</span></label>
+        <input id="upload" value="Upload" type="file" name="upload" accept=".js" onchange="handleFiles(this.files)">
+        <button id="setting" onclick="openSettingsTab();showsettingsall();"><span class="material-icons-round">settings</span></button>
+        <button id="fullscreen" onclick="toggleFullscreen();"><span class="material-icons-round">fullscreen</span></button>
+    </div>
+    <div class="answer">
+        <textarea id="editor"></textarea>
+        <div id="error">
+            JavaScript Console
+        </div>
+    </div>
+    <div id="settingBackground"></div>
+    <div id="settings" style="display: none;">
+        <div class="stTitle">
+            <div class="stTextTitle">Settings<span class="material-icons-round stIcon">settings</span></div>
+            <div class="stIconTitle"><span class="material-icons-round stIcon stX" onclick="closeSettingsTab();">close</span></div>
+        </div>
+        <hr>
+        <div class="stMain">
+            <div class="stItems">
+                <div class="stItem" onclick="showsettingsall()">Show all settings</div>
+                <hr>
+                <div class="stItem" onclick="showsettingsdisplay()">Display settings</div>
+                <hr>
+                <div class="stItem" onclick="showsettingsmessage()">Message settings</div>
+                <hr>
+                <div class="stItem" onclick="showsettingssave()">Save settings</div>
+                <hr>
+                <div class="stItem" onclick="showsettingsstorage()">Storage settings</div>
+            </div>
+            <div class="stContext">
+                <div id="stDisplay">
+                    <h1>Display</h1>
+                    <hr class="settingHr">
+                    <div class="consoleFontSize">Console font-size: <input type="text" id="cfs" placeholder="[Number][Unit]|[20px]"></div>
+                    <div class="editorFontSize">Editor font-size: <input type="text" id="efs" placeholder="[Number][unit]|[24px]"></div>
+                    <hr class="settingHr">
+                </div>
+                <div id="stMessage">
+                    <h1>Message</h1>
+                    <hr class="settingHr">
+                    <div class="linecolor">Line-color: <input type="text" id="lc" placeholder="[Color string]|[#fff111]"></div>
+                    <div class="fontsize">Font-size: <input type="text" id="mfs" placeholder="[Number][Unit]|[20px]"></div>
+                    <hr class="settingHr">
+                </div>
+                <div id="stSave">
+                    <h1>Save</h1>
+                    <hr class="settingHr">
+                    <div class="autosave">Auto save: <input type="text" id="as" placeholder="[Boolean]|[true/false]"></div>
+                    <div class="autosavetime">Auto saving time: <input type="text" id="ast" placeholder="[Number]'[ms]|[30000]"></div>
+                    <hr class="settingHr">
+                </div>
+                <div id="stStorage">
+                    <h1>Storage</h1>
+                    <hr class="settingHr">
+                    <div class="autoclear">Auto clear: <input type="text" id="ac" placeholder="[Boolean]|[true/false]"></div>
+                    <div class="autocleartime">Auto clearing time: <input type="text" id="act" placeholder="[Number]|[30]"></div>
+                    <div class="autocleartimeunit">Auto clearing time unit: <input type="text" id="actu" placeholder="[String]|[days/mins/s]"></div>
+                    <button onclick="clearStorage();">Clear storage (also clear all settings)</button>
+                    <hr class="settingHr">
+                </div>
+                <button onclick="saveSettings();">Save</button>
+                <button onclick="resetSettings();">Reset all settings</button>
+            </div>
+        </div>
+    </div>
+    <script src="../stopExecOnTimeout.js"></script>
+    <script src='../main.js'></script>
+    <script src='../javascript.js'></script>
+    <script src="../script.js"></script>
+    <script src="../settings.js"></script>
+    <script src="../save.js"></script>
+    <script src="../messageJS.js"></script>
+    <script src="../fullscreen.js"></script>
+    <script>
+        startXmessage({
+            top: 0,
+            pos: 'right',
+            during: '1s',
+            background: `linear-gradient(90deg, ${MessageLineColor} 5.08%, #FFFFFF 5.09%)`,
+            fontSize: MessageFontSize
+        });
+    </script>
+</body>
+
+</html>

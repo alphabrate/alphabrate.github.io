@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing your script...</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script>
+        var outputArray = [];
+        alert = confirm = console.log = function(e) {
+            outputArray.push(e);
+        }
+        try {
+            var url = location.href;
+            var backTo = url.split('?dt=')[1].split('&script=')[0];
+            var script = url.split('&script=')[1].split('&testval=')[0];
+            var testval = url.split('&testval=')[1].split(';,');
+            // Percent-encoding is used to encode spaces, quotes, and other special characters.
+            script = decodeURIComponent(script);
+            debugger;
+            try {
+                if (testval == undefined) {
+                    eval(script);
+                } else {
+                    for (let i = 0; i < testval.length; i++) {
+                        eval(decodeURIComponent(testval[i]));
+                        eval(script);
+                    }
+                }
+                // localStorage.clear();
+                var token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                debugger;
+                window.location.replace(`${backTo}?success=t&token=${token}&script=${url.split('&script=')[1].split('&testval=')[0]}`);
+                localStorage.setItem(token, JSON.stringify(outputArray));
+            } catch (e) {
+                console.table({
+                    Error: e.message
+                });
+                debugger;
+                window.location.replace(`${backTo}?error=${e}&script=${url.split('&script=')[1].split('&testval=')[0]}`);
+            }
+        } catch (e) {
+            window.location.replace(`${backTo}?error=testScript Error: ${e}&script=${"/* Sorry, your code was not saved. This may be because you have entered too many codes. */"}`);
+        }
+    </script>
+    <!-- Xchuang corp. -->
+    <!-- (c) xchuang corp. 2022. All rights reserved. -->
+</head>
+
+</html>
