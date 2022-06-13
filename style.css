@@ -132,6 +132,10 @@ a {
     margin: 10px;
 }
 
+.intro>h1 {
+    margin: 75px 0;
+}
+
 .product[text-left]::before {
     content: attr(data-text);
     position: absolute;
