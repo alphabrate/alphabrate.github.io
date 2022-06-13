@@ -66,7 +66,20 @@ br {
 h1 {
     display: flex;
     justify-content: center;
+    font-size: 25px;
+    letter-spacing: 0.02rem;
     align-items: center;
+    font-family: "Poppins", sans-serif;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    letter-spacing: 0.02rem;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
 }
 
 h1>svg {
@@ -76,10 +89,10 @@ h1>svg {
 }
 
 iframe[copyright] {
-    position: relative;
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    height: inherit;
+    height: 100%;
     width: 80%;
     max-width: 800px;
 }
@@ -89,7 +102,7 @@ p {
     max-width: 800px;
     min-width: 250px;
     margin: 0 auto;
-    padding: 55px;
+    padding: 0 55px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -107,13 +120,16 @@ a {
 }
 
 .product {
-    cursor: pointer;
     position: relative;
     margin: 50px auto;
     width: 80%;
     padding: 25px 0;
     border: 2px solid var(--themeColor);
     border-radius: 10px;
+}
+
+.product>.image>svg {
+    margin: 10px;
 }
 
 .product[text-left]::before {
@@ -147,6 +163,7 @@ a {
 }
 
 .product>.des>p {
+    user-select: text;
     font-size: 20px;
     text-align: center;
 }
@@ -164,4 +181,29 @@ a {
     max-width: 500px;
     border-radius: 15px;
     box-shadow: 0 2px 10px #00000025;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    background: #7B9CFF;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    border: none;
+    outline: none;
+    transition: .3s;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #429df1;
+}
+
+.des>a {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
